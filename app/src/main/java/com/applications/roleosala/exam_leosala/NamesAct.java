@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class NamesAct extends Activity {
     EditText txtNames;
-    String names[], cNames[], rNames[];
+    String names[], cNames[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -28,11 +28,8 @@ public class WinnersAct extends Activity {
     public void getShared(){
         sharedPreferences = getSharedPreferences("Leosala_data", MODE_PRIVATE);
         String data_1 = sharedPreferences.getString("Current", "");
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("thewin", "this winner");
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String value = preferences.getString("Current","Ambot kinsa ni daog diri BAHAHAHAHAHA");
-        txtCurWin.setText(value);
-        txtPrevWin.setText("Love you Sir");
+        if (sharedPreferences.contains("Current")){
+            txtCurWin.setText(sharedPreferences.getString("Current", ""));
+        }
     }
 }
