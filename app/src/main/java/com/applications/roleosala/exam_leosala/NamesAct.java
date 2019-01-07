@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class NamesAct extends Activity {
     EditText txtNames;
-    String names[], cNames[];
+    String names[], cNames[], rNames[];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,17 +19,21 @@ public class NamesAct extends Activity {
     private void __init__() {
         names = getResources().getStringArray(R.array.names);
         cNames = new String[names.length];
-        for(int i = names.length; i > 0; i--){
+        int c = names.length;
+        for(int i = 0; i < names.length; i++){
+            c--;
             if(i < 10){
-                cNames[i - 1] = "00" + i + " : " + names[i];
-            }else if(i < 100 && i >= 10){
-                cNames[i - 1] = "0" + i + " : " + names[i];
+                cNames[c] = "00" + i + ":" +  names[i];
+            }else if (i < 100 && i > 9){
+                cNames[c] = "0" + i + ":" +  names[i];
             }else{
-                cNames[i - 1 ] = i + " : " + names[i];
+                cNames[c] = i + ":" +  names[i];
             }
         }
-
         txtNames  = findViewById(R.id.txtNames);
+        txtNames.setKeyListener( null );
+        txtNames.setFocusable( false );
+        txtNames.setCursorVisible(false);
         Log.d("Num", String.valueOf(cNames.length));
         for(int i = 0; i < names.length; i++){
             txtNames.append(cNames[i]);
