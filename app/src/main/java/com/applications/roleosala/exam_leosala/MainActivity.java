@@ -43,7 +43,14 @@ public class MainActivity extends Activity {
         SharedPreferences sharedPreferences;
         sharedPreferences = getSharedPreferences("Leosala_data", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("Current",txtWinner.getText().toString());
+        String cur = sharedPreferences.getString("Current","");
+        if(cur.isEmpty()){
+            editor.putString("Current",txtWinner.getText().toString());
+            editor.putString("PrevWin", "");
+        }else{
+            editor.putString("PrevWin", cur);
+            editor.putString("Current",txtWinner.getText().toString());
+        }
         editor.commit();
         Toast.makeText(this, "Claimed!", Toast.LENGTH_SHORT).show();
     }
